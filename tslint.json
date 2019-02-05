@@ -1,0 +1,6 @@
+{
+  "extends": "@origami/tslint-config",
+  "rules": {
+    "no-submodule-imports": false
+  }
+}
