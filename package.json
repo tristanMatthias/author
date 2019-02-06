@@ -10,9 +10,8 @@
     "start": "NODE_ENV=development electron .",
     "clean": "rm -rf build/",
     "dev": "webpack --mode=development -w",
-    "build": "webpack --mode=production",
+    "build": "webpack --mode=production; yarn build:icon",
     "build:icon": "electron-icon-maker --input=./icon/icon.png --output ./icon",
-    "dist:debug": "DEBUG=electron-builder electron-builder",
     "dist": "electron-builder"
   },
   "dependencies": {
