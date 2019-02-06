@@ -5,6 +5,12 @@ export interface State {
 
 export interface App {
   title: string;
+  actions: AppBarAction[];
+}
+export interface AppBarAction {
+  icon: string;
+  tooltip: string;
+  function(e: React.MouseEvent): void;
 }
 
 export interface Projects {
@@ -30,4 +36,9 @@ export interface Project {
   downloadPercent?: number;
   behind?: number;
   ahead?: number;
+  files: ProjectFileData | false;
+}
+
+export interface ProjectFileData {
+  [file: string]: {[key: string]: string};
 }

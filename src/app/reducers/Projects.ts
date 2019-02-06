@@ -6,9 +6,10 @@ import immutable from 'seamless-immutable';
 import {
   DATA_KEY_PROJECTS,
   PROJECTS_CREATING_END,
-  PROJECTS_CREATING_ERROR,
   PROJECTS_CREATING_PROGRESS,
   PROJECTS_CREATING_START,
+  PROJECTS_ERROR_SET,
+  PROJECTS_FILES_SET,
   PROJECTS_LOADING_END,
   PROJECTS_LOADING_START,
   PROJECTS_REMOVE,
@@ -35,13 +36,13 @@ export const Projects = (state = intitialState, action: AnyAction) => {
     projectIndex = updated.projects.indexOf(project);
   }
 
-  const updateProject = (p: Partial<Project>) => {
+  const updateProject = (p: Partial<Project>, save= true) => {
     updated = updated.setIn(
       ['projects', projectIndex.toString()],
       ({ ...project, ...p })
     );
 
-    data.set(DATA_KEY_PROJECTS, updated.projects);
+    if (save) data.set(DATA_KEY_PROJECTS, updated.projects);
 
     return updated;
   };
@@ -64,7 +65,8 @@ export const Projects = (state = intitialState, action: AnyAction) => {
         loading: true,
         state: ProjectState.loading,
         downloadPercent: 0,
-        error: null
+        error: null,
+        files: false
       };
       updated = state.merge({
         projects: [...state.projects.asMutable(), _project]
@@ -82,11 +84,11 @@ export const Projects = (state = intitialState, action: AnyAction) => {
       return updated;
 
 
-    case PROJECTS_CREATING_ERROR:
+    case PROJECTS_ERROR_SET:
       return updateProject({
         loading: false,
         state: ProjectState.error,
-        error: 'Already'
+        error: action.error
       });
 
 
@@ -113,6 +115,11 @@ export const Projects = (state = intitialState, action: AnyAction) => {
       );
       data.set(DATA_KEY_PROJECTS, updated.projects);
       return updated;
+
+    case PROJECTS_FILES_SET:
+      return updateProject({
+        files: action.files
+      }, false);
 
 
     default:

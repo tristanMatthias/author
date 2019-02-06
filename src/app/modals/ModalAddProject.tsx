@@ -30,7 +30,7 @@ class ModalAddProjectBase extends React.Component<ModalAddProjectProps, ModalAdd
       <DialogTitle id='form-dialog-title'>Add a Bitbucket project</DialogTitle>
       <DialogContent>
         <DialogContentText>
-          Add a url to a Origin Bitbucket project you'd like to work on
+          Add a url to a Git project you'd like to work on
               </DialogContentText>
         <TextField
           autoFocus

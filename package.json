@@ -2,7 +2,7 @@
   "name": "author",
   "version": "0.0.0",
   "productName": "Author",
-  "description": "Author Origin content metadata.json files",
+  "description": "A content authoring app for editors and internationalization",
   "main": "main.js",
   "author": "Tristan Matthias <hello@tristanmatthias.com>",
   "license": "MIT",
