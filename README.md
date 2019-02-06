@@ -1,7 +1,7 @@
 # Author - Desktop app for editing JSON content
 
 <p align="center">
-  <img src="icon/icon.png" alt="Author App" style="width: 300px"/>
+  <img src="icon/icon-small.png" alt="Author App"/>
 </p>
 
 ---
